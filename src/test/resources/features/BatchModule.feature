@@ -1,25 +1,30 @@
 
 @tag
-Feature: Title of your feature
+Feature: Batch Module
   I want to use this template for my feature file
+  
+  
+  Background:
+  Given User sets Authoization to No  Auth.
+   
+    @tag1
+  Scenario Outline: Check if user able to create a program with valid endpoint and request body (non existing values)
+    Given User creates POST Request "<Sheetname>" and <rownumber> for the LMS batch api endpoints
+    When User sends HTTPS Request and  request Body with mandatory , additional  fields.
+    Then User receives 201 Created Status with response body.
+    Examples:
+   |Sheetname|rownumber|
+   |program|0|
+   
+  
 
   @tag1
-  Scenario: Title of your scenario
-    Given I want to write a step with precondition
-    And some other precondition
-    When I complete action
-    And some other action
-    And yet another action
-    Then I validate the outcomes
-    And check more outcomes
-
-  @tag2
-  Scenario Outline: Title of your scenario outline
-    Given I want to write a step with <name>
-    When I check for the <value> in step
-    Then I verify the <status> in step
-
-    Examples: 
-      | name  | value | status  |
-      | name1 |     5 | success |
-      | name2 |     7 | Fail    |
+  Scenario Outline: Check if user able to create a Batch with valid endpoint and request body (non existing values)
+  Given User creates POST Request "<Sheetname>" and <rownumber> for the LMS API batch endpoint with mandatory field.
+  When User sends HTTPS Request and  request Body with mandatory , additional  fields
+  Then User receives 201 Created Status with response body.
+  
+  Examples:
+   |Sheetname|rownumber|
+      |batch|0|
+   |batch|1|
